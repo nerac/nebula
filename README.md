@@ -1,4 +1,8 @@
-![Nebula: A github repository manager](https://user-images.githubusercontent.com/42247421/51596934-7e945200-1f13-11e9-8223-74ed8a8a8163.png)
+<p align="center">
+  <a href="https://github.com/nerac/nebula">
+    <img src="https://user-images.githubusercontent.com/42247421/51596934-7e945200-1f13-11e9-8223-74ed8a8a8163.png" alt="Nebubla: A github repository manager" title="Nebula: a github repository manager">
+  </a>
+</p>
 
 # Nebula: A github repository manager
 Nebula is an application that allows you to manage all your starred repositories on github in a meaningful way. Search, filter, tag or group your repositories so you never miss on that one repository you can't remember.
