@@ -1,3 +1,5 @@
+![Nebula: A github repository manager](https://imgur.com/5JJ4R5l)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
