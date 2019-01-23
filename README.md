@@ -1,6 +1,4 @@
-![Nebula: A github repository manager](https://imgur.com/5JJ4R5l)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![bae6c681-670a-48c0-96fc-5e8059e60ef9](https://user-images.githubusercontent.com/42247421/51596452-70920180-1f12-11e9-8dc0-3e34198685f3.png)
 
 ## Available Scripts
 
@@ -68,3 +66,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
