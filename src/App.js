@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import './app.scss';
+import styled from 'styled-components';
+import './app.css';
+
+const AppWrapper = styled.div`text-align: center;`;
 
 class App extends Component {
 	render() {
 		return (
-			<div className="App">
+			<AppWrapper>
 				<header className="App-header">
 					<p>
 						Edit <code>src/App.js</code> and save to reload.
@@ -13,7 +16,7 @@ class App extends Component {
 						Learn React
 					</a>
 				</header>
-			</div>
+			</AppWrapper>
 		);
 	}
 }
