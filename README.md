@@ -1,5 +1,4 @@
-![Nebula: A github starred repositories manager](https://user-images.githubusercontent.com/42247421/51596706-0af24500-1f13-11e9-8bb9-56b4f06146a2.png)
-
+![Nebula: A github repository manager](https://user-images.githubusercontent.com/42247421/51596934-7e945200-1f13-11e9-8223-74ed8a8a8163.png)
 
 ## Available Scripts
 
