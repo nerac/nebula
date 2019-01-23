@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import './app.css';
 
+import Card from './components/Card';
+import Container from './components/Container';
+
 const AppWrapper = styled.div`text-align: center;`;
+const SidebarWrapper = styled.div`
+	background-color: var(--white);
+`
 
 class App extends Component {
 	render() {
 		return (
-			<AppWrapper>
-				<header className="App-header">
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
-					<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-						Learn React
-					</a>
+			<AppWrapper className="App">
+				<header>
 				</header>
+				<Container>
+					<Card></Card>
+				</Container>
 			</AppWrapper>
 		);
 	}
