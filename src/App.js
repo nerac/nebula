@@ -1,56 +1,51 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import './app.css';
+import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
-
-import Card from './components/Card';
-import Container from './components/Container';
-
-import Profile from './Profile';
-import Blob from './Blob';
-
+import Container from "./components/Container";
+import Profile from "./Profile";
+import Blob from "./Blob";
+import { personalToken } from "./config";
 
 const client = new ApolloClient({
   uri: "https://api.github.com/graphql",
   request: operation => {
     operation.setContext({
       headers: {
-        authorization: `Bearer fed2e7b6681a9b60e57c51eabdd6dbbae3c6eb90`
-      },
+        authorization: `Bearer ${personalToken}`
+      }
     });
-  }, 
+  }
 });
-
-// client
-//   .query({
-//     query: GET_CONTENT
-//   })
-//   .then(console.log)
-
-
-
-// const AppWrapper = styled.div`text-align: center;`;
 
 class App extends Component {
   state = {
-    status: false
-  } 
+    status: false,
+    repoDetails: { repoName: "", repoOwner: "" }
+  };
 
-	render() {
-		return (
-      <ApolloProvider client={client}>     
+  handleRepoClick = (repoName, repoOwner) => {
+    const updatedDetails = { ...this.state.repoDetails };
+    updatedDetails.repoName = repoName;
+    updatedDetails.repoOwner = repoOwner;
+
+    this.setState({ repoDetails: updatedDetails });
+  };
+
+  render() {
+    const { repoDetails } = this.state;
+    return (
+      <ApolloProvider client={client}>
         <div className="App">
           <header />
           <Container>
-            <Profile />
-            <Blob />
+            <Profile onRepoClick={this.handleRepoClick} />
+            <Blob repoDetails={repoDetails} />
           </Container>
         </div>
       </ApolloProvider>
-		);
-	}
+    );
+  }
 }
 
 export default App;

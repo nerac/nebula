@@ -19,5 +19,14 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Adding your Personal Token from Github
+Visit Github -> Settings -> Developer Settings -> Personal Access Token -> Generate New Token. 
+
+Copy this token and paste in the config.js file.
+
+## Getting any user's starred repositories
+Open `Profile.js` in your text editor. Enter any Github username and save it. You should then be able to see a list of their starred repositories. Clicking on the title of any repository should fetch you the Readme file.
+
 # License: 
 [MIT](https://github.com/babel/babel/blob/master/LICENSE)
