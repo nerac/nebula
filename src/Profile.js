@@ -1,17 +1,24 @@
-import React from 'react'
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import React from "react";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+import { Card, List } from "semantic-ui-react";
+
+/**
+ * Enter any Github username here to fetch their starred repos.
+ */
+const user = "shidhincr";
 
 const GET_USER = gql`
   {
-    user(login:"nerac") {
+    user(login:${user}) {
         avatarUrl
         name
         starredRepositories(first: 20) {
           totalCount
           edges {
             node {
-              id  
+              id
+              name  
               description
               url
               owner {
@@ -24,45 +31,58 @@ const GET_USER = gql`
   }
 `;
 
-
-
-// name - jquery_jeditable
-// owner - NicolasCARPi
-
-export default () => {
+export default ({ onRepoClick }) => {
   return (
     <Query query={GET_USER}>
-       {
-           ({data}) => {
-               const { user } = data;
+      {({ data }) => {
+        const { user } = data;
+        console.log(user);
+        if (!user) return null;
 
-               if(!user) return null;
+        return (
+          <div>
+            <Card
+              image={user.avatarUrl}
+              header={user.name}
+              extra={`${
+                user.starredRepositories.totalCount
+              } starred repositories`}
+            />
 
-               return (
-                   <div>
-                       <div>
-                            { user.name }
-                            <p>You have { user.starredRepositories.totalCount } starred repositories</p>
-                       </div>
-                       <div style={{ maxWidth: "80px", borderRadius: "50%", overflow: "hidden" }} >
-                            <img src={user.avatarUrl} alt="avatar" style={{ maxWidth: "100%" }}/>
-                       </div>
+            <List divided relaxed>
+              {user.starredRepositories.edges.map(edge => (
+                <List.Item key={edge.node.id}>
+                  <List.Content>
+                    <List.Header
+                      as="a"
+                      onClick={() =>
+                        onRepoClick(edge.node.name, edge.node.owner.login)
+                      }
+                    >
+                      {edge.node.name}
+                    </List.Header>
+                    <List.Description>{edge.node.description}</List.Description>
 
-                       <ul>
-                           { user.starredRepositories.edges.map( edge => (
-                               <li key={edge.node.id} style={{ margin: "50px" }}>
-                                   <div>
-                                       <h2>{edge.node.description}</h2>
-                                       <span><a href={edge.node.url} target="_blank" rel="noopener noreferrer">link</a></span>
-                                   </div>
-                               </li>
-                           )) }
-                       </ul> 
-                   </div>
+                    <List.Description as="a" href={edge.node.url}>
+                      Visit this Repo
+                    </List.Description>
 
-               )
-           }
-       }
+                    <span>
+                      <a
+                        href={edge.node.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit this repo
+                      </a>
+                    </span>
+                  </List.Content>
+                </List.Item>
+              ))}
+            </List>
+          </div>
+        );
+      }}
     </Query>
-  )
-}
+  );
+};
