@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { Grid } from "semantic-ui-react";
 
-import Container from "./components/Container";
 import Profile from "./Profile";
 import Blob from "./Blob";
 import { personalToken } from "./config";
@@ -38,10 +38,16 @@ class App extends Component {
       <ApolloProvider client={client}>
         <div className="App">
           <header />
-          <Container>
-            <Profile onRepoClick={this.handleRepoClick} />
-            <Blob repoDetails={repoDetails} />
-          </Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <Profile onRepoClick={this.handleRepoClick} />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <Blob repoDetails={repoDetails} />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </div>
       </ApolloProvider>
     );
